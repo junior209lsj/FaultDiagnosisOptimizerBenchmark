@@ -2,6 +2,7 @@ from scipy import stats
 
 from typing import List, Dict
 
+
 def log_qsample(n_params: int,
             param_names: List[str],
             lb: List[float],

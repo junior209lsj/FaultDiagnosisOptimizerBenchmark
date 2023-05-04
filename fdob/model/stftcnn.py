@@ -2,6 +2,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
+
 class STFTCNN(nn.Module):
     def __init__(self,
                  in_planes: int=1,
@@ -31,11 +32,8 @@ class STFTCNN(nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        # print(x.size())
         x = self._conv_layers(x)
-        # print(x.size())
         x = torch.flatten(x, 1)
         x = self._linear_layers(x)
-        # print(x.size())
 
         return x

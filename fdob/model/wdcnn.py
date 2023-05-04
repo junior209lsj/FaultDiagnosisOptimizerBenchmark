@@ -51,24 +51,9 @@ class WDCNN(nn.Module):
             torch.nn.Linear(100, n_classes)
         )
 
-        # self.reset_weights()
-
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.conv_layers(x)
-        # print(x.size())
         x = torch.flatten(x, 1)
-        # print(x.size())
         x = self.linear_layers(x)
  
         return x
-
-    # def _init_weight(self, m):
-    #     if isinstance(m, nn.Conv1d):
-    #         m.reset_parameters()
-    #     elif isinstance(m, nn.BatchNorm1d):
-    #         m.reset_parameters()
-    #     elif isinstance(m, nn.Linear):
-    #         m.reset_parameters()
-
-    # def reset_weights(self):
-    #     self.apply(self._init_weight)

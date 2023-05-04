@@ -2,6 +2,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
+
 class WDCNNRNN(nn.Module):
     def __init__(self, n_classes: int=10):
         super(WDCNNRNN, self).__init__()

@@ -98,7 +98,6 @@ class NpToTensor:
 
 class ToSignal:
     def __call__(self, x):
-        # bsize = x.size(dim=0)
         return x.view(1, -1)
 
 
