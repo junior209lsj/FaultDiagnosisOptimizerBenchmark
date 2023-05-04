@@ -8,6 +8,8 @@ from skimage.transform import resize
 from typing import List, Callable
 
 class AWGN:
+    """Generate additive white Gaussian noise (AWGN) for SNR(dB)
+    """
     def __init__(self, snr: float) -> None:
         self.snr = snr
 
