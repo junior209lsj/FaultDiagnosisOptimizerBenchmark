@@ -1,0 +1,16 @@
+*.sh
+*.err
+*.csv
+*.out
+logs/*
+data
+dataset/*
+
+__pycache__/
+*.py[cod]
+
+dfb/__pycache__/
+*.py[cod]
+
+dfb/model/__pycache__/
+*.py[cod]
