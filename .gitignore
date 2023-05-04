@@ -2,7 +2,7 @@
 *.err
 *.csv
 *.out
-logs/*
+logs
 data
 dataset/*
 
