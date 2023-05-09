@@ -13,7 +13,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-`Note`: We only tested this code in PC using Ubuntu Linux and CUDA GPU. Experimental specifications are listed below.
+`Note`: We tested this code in PC using Ubuntu Linux and CUDA GPU. Experimental specifications are listed below.
 
 |Type|Specification|
 |------|---|
