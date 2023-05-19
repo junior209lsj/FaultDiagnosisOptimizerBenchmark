@@ -7,14 +7,15 @@ from skimage.transform import resize
 
 from typing import List, Callable
 
+
 class AWGN:
-    """Generate additive white Gaussian noise (AWGN) for SNR(dB)
-    """
+    """Generate additive white Gaussian noise (AWGN) for SNR(dB)"""
+
     def __init__(self, snr: float) -> None:
         self.snr = snr
 
     def __call__(self, x: np.ndarray) -> np.ndarray:
-        sig_avg_watts = np.mean(x ** 2.0)
+        sig_avg_watts = np.mean(x**2.0)
         snr_real = 10 ** (self.snr / 10)
         n0 = sig_avg_watts / snr_real
         noise_avg_db = np.sqrt(n0)
@@ -23,6 +24,8 @@ class AWGN:
 
 
 class CWT:
+    """Generate the 2D spectogram using continous wavelet transform (CWT)"""
+
     def __init__(
         self,
         widths: int,
@@ -43,6 +46,8 @@ class CWT:
 
 
 class CWTSignal:
+    """Generate the multi-channel 1D spectogram using CWT"""
+
     def __init__(
         self, channels: int, wavelet: Callable[..., np.ndarray] = signal.ricker
     ) -> None:
@@ -58,8 +63,10 @@ class CWTSignal:
 
 
 class STFT:
+    """Generate the 2D spectogram using STFT"""
+
     def __init__(self, window_length, noverlap, nfft):
-        self.window = signal.get_window('hann', window_length)
+        self.window = signal.get_window("hann", window_length)
         self.window_length = window_length
         self.noverlap = noverlap
         self.nfft = nfft
@@ -67,13 +74,18 @@ class STFT:
     def __call__(self, x):
         return np.abs(
             signal.stft(
-                x, window=self.window, nperseg=self.window_length,
-                noverlap=self.noverlap, nfft=self.nfft
+                x,
+                window=self.window,
+                nperseg=self.window_length,
+                noverlap=self.noverlap,
+                nfft=self.nfft,
             )[2]
         )
 
 
 class Resize:
+    """Resize images"""
+
     def __init__(self, h, w):
         self.h = h
         self.w = w
@@ -83,6 +95,8 @@ class Resize:
 
 
 class Crop:
+    """Crop images"""
+
     def __init__(self, x0, x1, y0, y1):
         self.x0 = x0
         self.x1 = x1
@@ -94,16 +108,22 @@ class Crop:
 
 
 class NpToTensor:
+    """Convert numpy array to PyTorch Tensor"""
+
     def __call__(self, x):
         return torch.from_numpy(x)
 
 
 class ToSignal:
+    """Convert (N, ) 1D Tensor to (1, N) 2D Tensor"""
+
     def __call__(self, x):
         return x.view(1, -1)
 
 
 class ToImage:
+    """Convert (HWC) style Tensor to (CHW) Tensor"""
+
     def __init__(self, h, w, c):
         self.h = h
         self.w = w
@@ -114,6 +134,8 @@ class ToImage:
 
 
 class Standardize:
+    """Standardize inputs"""
+
     def __call__(self, x):
         u = torch.mean(x)
         std = torch.std(x)
@@ -121,6 +143,8 @@ class Standardize:
 
 
 class Normalize:
+    """Normalize inputs"""
+
     def __call__(self, x):
         x_min = torch.min(x)
         x_max = torch.max(x)
@@ -128,5 +152,7 @@ class Normalize:
 
 
 class FFT:
+    """Generate frequency-domain input using fast Fourier transform (FFT)"""
+
     def __call__(self, x):
         return torch.abs(torch.fft.fft(x))

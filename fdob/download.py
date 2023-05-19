@@ -19,7 +19,7 @@ def download_cwru(root: str, sample_rate="12k") -> pd.DataFrame:
         Root directory where the data files are saved.
     sample rate: str
         if "12k", 12 KHz data will be downloaded, or if "48k", 48 KHz data will be downloaded.
-    
+
     Returns
     ----------
     pd.DataFrame
@@ -216,8 +216,8 @@ def download_paderborn(root: str, sample: bool = False) -> pd.DataFrame:
     """
     Download Paderborn University dataset.
     The data with bearing of real damages will be downloaded.
-    Please see Table 5 of the paper "Condition Monitoring of Bearing Damage in 
-    Electromechanical Drive Systems by Using Motor Current Signals of Electric Motors: 
+    Please see Table 5 of the paper "Condition Monitoring of Bearing Damage in
+    Electromechanical Drive Systems by Using Motor Current Signals of Electric Motors:
     A Benchmark Data Set for Data-Driven Classification"
     Author: Seongjae Lee
 
@@ -227,7 +227,7 @@ def download_paderborn(root: str, sample: bool = False) -> pd.DataFrame:
         Root directory where the data files are saved.
     sample: bool
         If true, only first data file of each bearing were used.
-    
+
     Returns
     ----------
     pd.DataFrame
@@ -331,7 +331,7 @@ def download_mfpt(root: str) -> pd.DataFrame:
     ----------
     root: str
         Root directory where the data files are saved.
-    
+
     Returns
     ----------
     pd.DataFrame

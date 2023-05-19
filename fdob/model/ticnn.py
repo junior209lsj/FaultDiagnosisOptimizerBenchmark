@@ -6,7 +6,30 @@ from typing import Union, Tuple, List
 
 
 class TICNN(nn.Module):
-    def __init__(self, n_classes: int=10, device: str=None):
+    """
+    Implementation of the model by (Zhang et al. 2018), Convolution Neural
+     Networks with Training Interference (TICNN).
+
+    (Zhang et al. 2018) Wei Zhang, Chuanhao Li, Gaoliang Peng, Yuanhang Chen,
+     and Zhujun Zhang, “A deep convolutional neural network with new training
+     methods for bearing fault diagnosis under noisy environment and different
+     working load,” Mechanical Systems and Signal Processing, vol. 100,
+     pp. 439–453, 2018, doi: 10.1016/j.ymssp.2017.06.022.
+    """
+
+    def __init__(self, n_classes: int = 10, device: str = None):
+        """
+        Parameters
+        ----------
+        n_classes: int
+            The number of classes of dataset.
+        device: str
+            Device name of PyTorch.
+
+        Note
+        ----------
+        TICNN needs device id, e.g., cuda:0, for training.
+        """
         super(TICNN, self).__init__()
 
         self.dropout_rate = 0.5
@@ -69,6 +92,10 @@ class TICNN(nn.Module):
 
 
 class Conv1dDropout(nn.Conv1d):
+    """
+    PyTorch implementation of TICNN's convolutional dropout. See (Zhang et al. 2018)
+    """
+
     def __init__(
         self,
         in_channels: int,

@@ -23,7 +23,7 @@ def split_dataframe(
         The ratio of the validation data segment.
         The test data segment ratio is automatically selected to 1 - train_ratio - val_ratio.
         train_ratio + val_ratio cannot be exceed 1.0.
-    
+
     Returns
     ----------
     Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]
@@ -32,20 +32,11 @@ def split_dataframe(
     cum_train_ratio = train_ratio
     cum_val_ratio = cum_train_ratio + val_ratio
 
-    train_df = {
-        "data": [],
-        "label": []
-    }
+    train_df = {"data": [], "label": []}
 
-    val_df = {
-        "data": [],
-        "label": []
-    }
+    val_df = {"data": [], "label": []}
 
-    test_df = {
-        "data": [],
-        "label": []
-    }
+    test_df = {"data": [], "label": []}
 
     for _, row in df.iterrows():
         segment_length = row.data.size
@@ -59,7 +50,7 @@ def split_dataframe(
 
         test_df["data"].append(row.data[val_idx:])
         test_df["label"].append(row.label)
-    
+
     train_df = pd.DataFrame(train_df)
     val_df = pd.DataFrame(val_df)
     test_df = pd.DataFrame(test_df)
@@ -132,7 +123,7 @@ def sample_data(
     cls_id: int
         The class ID of the data.
     num_class: int
-        The number of classes in the entire dataset 
+        The number of classes in the entire dataset
         (used only when creating one-hot encoding).
     one_hot: bool
         Whether to return the data in one-hot encoding.

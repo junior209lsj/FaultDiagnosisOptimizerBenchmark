@@ -114,6 +114,7 @@ class DatasetHandler:
         Python dictionary that contains multi-domain datasets.
         The keys of the dictionary represents data domain.
     """
+
     def __init__(self):
         self.dataloaders = {}
 

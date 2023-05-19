@@ -4,9 +4,29 @@ import torch.nn.functional as F
 
 
 class DCN(nn.Module):
+    """
+    Implementation of the model by (Liang and Zhao 2021),
+    one-dimensional dilated convolution network with residual connection(DCN).
+
+    (Liang and Zhao 2021) Haopeng Liang and Xiaoqiang Zhao,“Rolling Bearing
+     Fault Diagnosis Based on One-Dimensional Dilated Convolution Network
+     With Residual Connection,” IEEE Access, vol. 9, pp. 31078–31091,
+     2021, doi: 10.1109/access.2021.3059761.
+    """
+
     def __init__(
         self, in_channels: int = 1, n_classes: int = 10, residual_coef: float = 0.2
     ):
+        """
+        Parameters
+        ----------
+        in_channels: int
+            The number of channels of input data.
+        n_classes: int
+            The number of classes of dataset.
+        residual coef: float
+            Residual coefficient of DCN, see (Liang and Zhao 2021)
+        """
         super(DCN, self).__init__()
 
         self.residual_block = ResidualConnectionBlock(

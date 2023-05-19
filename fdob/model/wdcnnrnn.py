@@ -4,48 +4,65 @@ import torch.nn.functional as F
 
 
 class WDCNNRNN(nn.Module):
-    def __init__(self, n_classes: int=10):
+    """
+    Implementation of the model by (Shenfield and Howarth 2020), dual-path
+     recurrent neural network with a wide first kernel and deep convolutional
+     neural network pathway (RNN-WDCNN).
+
+    (Shenfield and Howarth 2020) Alex Shenfield and Martin Howarth, “A Novel
+     Deep Learning Model for the Detection and Identification of Rolling
+     Element-Bearing Faults,” Sensors, vol. 20, no. 18, p. 5112, 2020,
+     doi: 10.3390/s20185112.
+    """
+
+    def __init__(self, n_classes: int = 10):
+        """
+        Parameters
+        ----------
+        n_classes: int
+            The number of classes of dataset.
+        """
         super(WDCNNRNN, self).__init__()
 
-        self.first_conv = nn.Conv1d(in_channels=1, out_channels=16, kernel_size=64, padding='same')
-        self.rnn = nn.LSTM(input_size=16, hidden_size=16, batch_first=True, num_layers=1)
+        self.first_conv = nn.Conv1d(
+            in_channels=1, out_channels=16, kernel_size=64, padding="same"
+        )
+        self.rnn = nn.LSTM(
+            input_size=16, hidden_size=16, batch_first=True, num_layers=1
+        )
         self.rnn_dropout = nn.Dropout(0.8)
 
         self.fcnn_layers = nn.Sequential(
-            nn.Conv1d(in_channels=1, out_channels=16, kernel_size=64, padding='same'),
+            nn.Conv1d(in_channels=1, out_channels=16, kernel_size=64, padding="same"),
             nn.ReLU(),
             nn.BatchNorm1d(16),
             nn.MaxPool1d(kernel_size=2, stride=2),
-
-            nn.Conv1d(in_channels=16, out_channels=32, kernel_size=3, padding='same'),
+            nn.Conv1d(in_channels=16, out_channels=32, kernel_size=3, padding="same"),
             nn.ReLU(),
             nn.BatchNorm1d(32),
             nn.MaxPool1d(kernel_size=2, stride=2),
-
-            nn.Conv1d(in_channels=32, out_channels=64, kernel_size=3, padding='same'),
+            nn.Conv1d(in_channels=32, out_channels=64, kernel_size=3, padding="same"),
             nn.ReLU(),
             nn.BatchNorm1d(64),
             nn.MaxPool1d(kernel_size=2, stride=2),
-
-            nn.Conv1d(in_channels=64, out_channels=64, kernel_size=3, padding='same'),
+            nn.Conv1d(in_channels=64, out_channels=64, kernel_size=3, padding="same"),
             nn.ReLU(),
             nn.BatchNorm1d(64),
             nn.MaxPool1d(kernel_size=2, stride=2),
-
-            nn.Conv1d(in_channels=64, out_channels=64, kernel_size=3, padding='same'),
+            nn.Conv1d(in_channels=64, out_channels=64, kernel_size=3, padding="same"),
             nn.ReLU(),
             nn.BatchNorm1d(64),
             nn.MaxPool1d(kernel_size=2, stride=2),
         )
 
         self.linear_layers = nn.Sequential(
-            nn.Linear(in_features=64*128, out_features=100),
+            nn.Linear(in_features=64 * 128, out_features=100),
             nn.BatchNorm1d(num_features=100),
-            nn.Dropout(0.5)
+            nn.Dropout(0.5),
         )
 
         self.final_layers = nn.Sequential(
-            nn.Linear(in_features=100+16, out_features=n_classes)
+            nn.Linear(in_features=100 + 16, out_features=n_classes)
         )
 
     def forward(self, x):

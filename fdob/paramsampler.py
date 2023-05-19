@@ -3,13 +3,15 @@ from scipy import stats
 from typing import List, Dict
 
 
-def log_qsample(n_params: int,
-            param_names: List[str],
-            lb: List[float],
-            ub: List[float],
-            reversed: List[bool],
-            n_exps: int,
-            seed: int = None) -> Dict:
+def log_qsample(
+    n_params: int,
+    param_names: List[str],
+    lb: List[float],
+    ub: List[float],
+    reversed: List[bool],
+    n_exps: int,
+    seed: int = None,
+) -> Dict:
     """
     Sample hyperparameters in search space from a quasi-random distribution on a log scale.
 
@@ -36,7 +38,7 @@ def log_qsample(n_params: int,
         The number of samples.
     seed: Optional[int]
         Random seed.
-    
+
     Returns
     ----------
     Dict
@@ -55,5 +57,5 @@ def log_qsample(n_params: int,
         if reversed[i]:
             p = 1 - p
         param_map[param_names[i]] = p
-    
+
     return param_map
