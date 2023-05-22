@@ -1,4 +1,4 @@
-# Impact of Deep Learning Optimizers and Hyperparameter Tuning on the Performance of Bearing Fault Diagnosis
+# Fault Diagnosis Optimizer Benchmark
 
 This is the code base for the benchmark study article `Impact of Deep Learning Optimizers and Hyperparameter Tuning on the Performance of Bearing Fault Diagnosis`. We implemented end-to-end optimization benchmark code using public bearing fault datasets and state-of-the-art fault diagnosis models.
 
