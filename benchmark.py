@@ -71,12 +71,13 @@ def train(
         mode="min",
     )
     trainer = pl.Trainer(
-        gpus=[n_gpu],
+        accelerator='gpu', 
+        devices=[n_gpu],
         max_epochs=n_epochs,
         val_check_interval=n_steps_d,
         default_root_dir=f"{result_dir}",
         callbacks=[callback],
-        logger=logger,
+        logger=logger
     )
     trainer.fit(
         model=training_module,
@@ -156,7 +157,8 @@ def test(
         mode="min",
     )
     trainer = pl.Trainer(
-        gpus=[n_gpu],
+        accelerator='gpu', 
+        devices=[n_gpu],
         max_epochs=n_epochs,
         val_check_interval=n_steps_d,
         default_root_dir=f"{result_dir}",
