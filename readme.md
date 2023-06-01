@@ -1,6 +1,12 @@
 # Fault Diagnosis Optimizer Benchmark
 
-This is the code base for the benchmark study article `Impact of Deep Learning Optimizers and Hyperparameter Tuning on the Performance of Bearing Fault Diagnosis`. We implemented end-to-end optimization benchmark code using public bearing fault datasets and state-of-the-art fault diagnosis models.
+This is the code base for the benchmark study article `Impact of Deep Learning Optimizers and Hyperparameter Tuning on the Performance of Bearing Fault Diagnosis`. 
+
+# Description
+
+We implemented end-to-end optimization benchmark code using public bearing fault datasets and state-of-the-art fault diagnosis models. This code provides public dataset download, data preprocessing, quasi-random hyperparameter sampling, and model training.
+
+![ga](./img/gagraphic.jpg)
 
 # Requirements
 
@@ -27,3 +33,13 @@ pip install -r requirements.txt
 # Getting Started
 
 We provide short demo code. Check `tutorial.ipynb`.
+
+# License
+
+MIT License.
+
+# Citation
+
+If this code is helpful, please cite our paper:
+
+Our paper has been accepted by IEEE Access and the publication process is being carried out, and the paper URL and bibtex information will be added later.
