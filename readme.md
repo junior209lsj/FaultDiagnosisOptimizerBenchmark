@@ -42,4 +42,16 @@ MIT License.
 
 If this code is helpful, please cite our paper:
 
-Our paper has been accepted by IEEE Access and the publication process is being carried out, and the paper URL and bibtex information will be added later.
+Our paper is currently available as early access version. [Link](https://ieeexplore.ieee.org/document/10141610/keywords#keywords)
+
+```
+@ARTICLE{10141610,
+  author={Lee, Seongjae and Kim, Taehyoun},
+  journal={IEEE Access}, 
+  title={Impact of Deep Learning Optimizers and Hyperparameter Tuning on the Performance of Bearing Fault Diagnosis}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-1},
+  doi={10.1109/ACCESS.2023.3281910}}
+```
