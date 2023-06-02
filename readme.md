@@ -1,6 +1,6 @@
 # Fault Diagnosis Optimizer Benchmark
 
-This is the code base for the benchmark study article `Impact of Deep Learning Optimizers and Hyperparameter Tuning on the Performance of Bearing Fault Diagnosis`. 
+This is the repository for the benchmark study article `Impact of Deep Learning Optimizers and Hyperparameter Tuning on the Performance of Bearing Fault Diagnosis`. 
 
 # Description
 
