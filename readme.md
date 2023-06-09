@@ -40,9 +40,7 @@ MIT License.
 
 # Citation
 
-If this code is helpful, please cite our paper:
-
-Our paper is currently available as early access version. [Link](https://ieeexplore.ieee.org/document/10141610/keywords#keywords)
+If this code is helpful, please cite our paper [Link](https://ieeexplore.ieee.org/abstract/document/10141610):
 
 ```
 @ARTICLE{10141610,
@@ -50,8 +48,8 @@ Our paper is currently available as early access version. [Link](https://ieeexpl
   journal={IEEE Access}, 
   title={Impact of Deep Learning Optimizers and Hyperparameter Tuning on the Performance of Bearing Fault Diagnosis}, 
   year={2023},
-  volume={},
+  volume={11},
   number={},
-  pages={1-1},
+  pages={55046-55070},
   doi={10.1109/ACCESS.2023.3281910}}
 ```
